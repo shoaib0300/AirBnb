@@ -1,0 +1,3 @@
+GRANT ALL PRIVILEGES ON Airbnb.* TO 'root'@'localhost';
+
+FLUSH PRIVILEGES;

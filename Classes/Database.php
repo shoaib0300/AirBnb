@@ -8,7 +8,6 @@
         public static $instance;
         private function __construct(){
             $this->connection = new PDO("mysql:host=$this->server; dbname=$this->database", $this->username, $this->password);
-            $this->connection->setAttributes(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         public static function getInstance(){
             if(!self::$instance){
@@ -20,4 +19,3 @@
             return $this->connection;
         }
     }
-?>
