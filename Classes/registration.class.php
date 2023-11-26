@@ -16,7 +16,6 @@ class Registration{
             echo "Password is Wrong";
         }
     }
-
     public function saveToDatabase($username, $email, $password, $country, $phone){
         global $db;
         $sql = "INSERT INTO users (username, email, password, country, phone) VALUES (?, ?, ?, ?, ?)";
