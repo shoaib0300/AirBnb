@@ -1,5 +1,5 @@
 <?php
-require 'Classes/Session.php';
+include 'Classes/Session.php';
 
 class Logout
 {

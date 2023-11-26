@@ -1,5 +1,7 @@
 <?php 
     require_once 'Classes/login.class.php';
+    include 'HeaderFooter/Header.php';
+    
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(empty($_POST["email"]) || empty($_POST["password"])){
             echo "<label>All Fields are required</label>";

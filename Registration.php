@@ -1,14 +1,13 @@
 <?php 
     require_once 'Classes/registration.class.php';
+    include 'HeaderFooter/Header.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $registration = new Registration();
         $registration->processRegistration($_POST['name'], $_POST['email'], $_POST['password'],
-                                $_POST['confirm-password'], $_POST['country'], $_POST['phone']);
+        $_POST['confirm-password'], $_POST['country'], $_POST['phone']);
     }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

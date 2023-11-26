@@ -1,23 +1,19 @@
 <?php
 
 require 'Database.php';
-require 'Session.php';
 
 class Login
 {
     private $db;
-
     public function __construct()
     {
         $instance = Database::getInstance();
         $this->db = $instance->getConnection();
     }
-
     public function loginProcess($email, $password)
     {
         $this->sendDataToDB($email, $password);
     }
-
     public function sendDataToDB($email, $password)
     {
         $sql = "SELECT * FROM users WHERE email = '$email' OR password = '$password'";
