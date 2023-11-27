@@ -1,11 +1,8 @@
 <?php
     include 'rooms/CreateRoom.php';
-
-    echo '<a href="index.php">Home</a>'.'<br>';
-    echo '<a href="Login.php">Login</a>'. '<br>';
-    echo '<a href="Registration.php">Registration</a>'. '<br>';
+    include 'HeaderFooter/Header.php';
     $data = new Room();
-    $getrooms = $data->getRoomsFromDB();
+    $getrooms = $data->getRoomsFromDB();  
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['delete'])) {
             $id = $_POST['room_id'];
@@ -40,19 +37,22 @@
     echo '<div class="single-card">';
     foreach ($getrooms as $room) {
         echo '<div class="card" style="width: 340px;">';
-        echo '<p style="font-size: 12px;">Post id: ' . $room['room_id'] . '</p>';
+        echo '<form method="post">';
+        echo '<input type="hidden" name="room_id" value="' . $room['room_id'] . '">';
+        echo '<p style="font-size: 12px;">Post id: ' . $room['room_id'] .'&emsp; &emsp;';
+        if (isset($_SESSION['user']) && ($_SESSION['user'] == $room['owner_id'])) {
+            echo '<a href="room-edit.php?id=' . $room['room_id'] . '" name="edit" value="Edit" class="btn btn-link">Edit</a>' .
+                '<a type="submit" class="btn btn-link" name="delete" value="Delete" style="color: red;">Delete</a>';
+        }
+        echo '</p>';
+        echo '</form>';           
         echo '<h4>Room Number: ' . $room['room_number'] . '</h4>';
         echo '<p>Price: ' . $room['room_price'] . '</p>';
         echo '<p>Location: ' . $room['location'] . '</p>';
         echo '<p>Guests: ' . $room['number_of_guests'] . '</p>';
         echo '<p>Available: ' . $room['available'] . '</p>';
-        echo '<p>Available From: ' . $room['available_from'] . '</p>';
-        echo '<p>Available To: ' . $room['available_to'] . '</p>';
-        echo '<form method="post">';
-        echo '<input type="hidden" name="room_id" value="' . $room['room_id'] . '">';
-        echo '<button type="submit" class="btn btn-default" name="edit" value="edit">Edit</button>';
-        echo '<button type="submit" class="btn btn-danger" name="delete" value="Delete">Delete</button>';
-        echo '</form>';
+        echo '<p>Available From: ' . date('Y-m-d', strtotime($room['available_from'])) . '</p>';
+        echo '<p>Available To: ' . date('Y-m-d', strtotime($room['available_to'])) . '</p>';
         echo '</div>';
         echo '<br>';
     }

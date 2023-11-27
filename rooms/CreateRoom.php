@@ -56,6 +56,33 @@
             $stmt = $this->db->prepare($sql);
             $stmt->execute([$id]);
             header("Location: index.php");  
+        }
+        public function getSingleRoom($id){
+            $sql = "SELECT * FROM rooms WHERE room_id = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$id]);
+            $room = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $room;
+        }
+        public function updateRoom($data){
+            $sql = "UPDATE rooms SET room_number=:room_number, price=:price, location=:location, number_of_guests=:number_of_guests, available=:available,
+            available_from=:available_from, available_to=:available_to WHERE room_id=:room_id LIMIT 1";
+            $data = [
+                ':room_number' => $data['room_number'],
+                ':price' => $data['price'],
+                ':location' => $data['location'],
+                ':number_of_guests' => $data['number_of_guests'],
+                ':available' => $data['available'],
+                ':available_from' => $data['available_from'],
+                ':available_to' => $data['available_to'],
+                ':room_id' => $data['room_id']
+            ];
+            $stmt = $this->db->prepare($sql);
+            $query_execute = $stmt->execute($data);
+            if($query_execute){
+                header("Refresh: room-edit.php?id=".$data[':room_id']);
+                echo "Updated Successfully";
+            }
         }        
     }
 ?>

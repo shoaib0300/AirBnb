@@ -14,20 +14,19 @@ class Login
     }
     public function sendDataToDB($email, $password)
     {
-        $sql = "SELECT * FROM users WHERE email = '$email' OR password = '$password'";
+        $sql = "SELECT * FROM users WHERE email = '$email'";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($password == $user['password']){
-            Session::sessiosStart();
             Session::setSession('user',$user['id']);
             Session::setSession('email',$user['email']);
             Session::setSession('name',$user['name']);            
             Session::setSession('Login', true);
             header("Location: index.php");
         } else {
-            echo "Password and Email is Wrong";
+            echo "Email OR Password is Wrong";
         }
     }
 }
