@@ -3,7 +3,7 @@
     require 'Classes/Database.php'; 
     $instance = Database::getInstance();
     $db = $instance->getConnection();
-
+    
     if(isset($_SESSION['user'])){
         $id = $_SESSION['user'];
         $sql = "SELECT * FROM users WHERE id = $id"; 
@@ -15,9 +15,7 @@
         $_SESSION['email'] = $user['email'];
         $_SESSION['country'] = $user['country'];
         $_SESSION['phone'] = $user['phone'];
-        echo $_SESSION['email'];
-
-    }
+        echo $_SESSION['email'];}
     else{
         header("Location: Login.php");
     }

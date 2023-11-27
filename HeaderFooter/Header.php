@@ -49,12 +49,12 @@
             <li class="nav-item">
                 <?php
                 if(isset($_SESSION['username'])){
-                    echo '<a class="nav-link" href="createproperty.php">Rent You Property</a>';
+                    echo '<a class="nav-link" href="createproperty.php">Rent You Rooms</a>';
                 }
                 ?>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="allrooms.php">See All Properties</a>
+                <a class="nav-link" href="allrooms.php">See All Rooms</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
