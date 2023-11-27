@@ -80,8 +80,8 @@
             $stmt = $this->db->prepare($sql);
             $query_execute = $stmt->execute($data);
             if($query_execute){
-                $_SESSION['message'] = "Updated Successfully";
                 header("Refresh: room-edit.php?id=".$data[':room_id']);
+                echo "Updated Successfully";
             }
         }        
     }

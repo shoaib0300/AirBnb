@@ -37,8 +37,15 @@
     echo '<div class="single-card">';
     foreach ($getrooms as $room) {
         echo '<div class="card" style="width: 340px;">';
-        echo '<p style="font-size: 12px;">owner id: ' . $room['owner_id'] . '</p>';
-        echo '<p style="font-size: 12px;">Post id: ' . $room['room_id'] . '</p>';
+        echo '<form method="post">';
+        echo '<input type="hidden" name="room_id" value="' . $room['room_id'] . '">';
+        echo '<p style="font-size: 12px;">Post id: ' . $room['room_id'] .'&emsp; &emsp;';
+        if (isset($_SESSION['user']) && ($_SESSION['user'] == $room['owner_id'])) {
+            echo '<a href="room-edit.php?id=' . $room['room_id'] . '" name="edit" value="Edit" class="btn btn-link">Edit</a>' .
+                '<a type="submit" class="btn btn-link" name="delete" value="Delete" style="color: red;">Delete</a>';
+        }
+        echo '</p>';
+        echo '</form>';           
         echo '<h4>Room Number: ' . $room['room_number'] . '</h4>';
         echo '<p>Price: ' . $room['room_price'] . '</p>';
         echo '<p>Location: ' . $room['location'] . '</p>';
@@ -46,13 +53,6 @@
         echo '<p>Available: ' . $room['available'] . '</p>';
         echo '<p>Available From: ' . date('Y-m-d', strtotime($room['available_from'])) . '</p>';
         echo '<p>Available To: ' . date('Y-m-d', strtotime($room['available_to'])) . '</p>';
-        if(isset($_SESSION['user']) && ($_SESSION['user']) == $room['owner_id']){
-        echo '<form method="post">';
-            echo '<input type="hidden" name="room_id" value="' . $room['room_id'] . '">';
-            echo '<a href="room-edit.php?id=' . $room['room_id'] . '" name="edit" value="Edit" class="btn btn-default">Edit</a>';
-            echo '<button type="submit" class="btn btn-danger" name="delete" value="Delete">Delete</button>';
-        echo '</form>';            
-        }
         echo '</div>';
         echo '<br>';
     }
