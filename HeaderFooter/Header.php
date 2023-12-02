@@ -56,6 +56,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="allrooms.php">See All Rooms</a>
             </li>
+            <li class="nav-item">
+                <?php
+                if(isset($_SESSION['username'])){
+                    echo '<a class="nav-link" href="mybooking.php">My Bookings</a>';
+                }
+                ?>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -33,8 +33,8 @@
                 <input type="text" class="form-control" name="country" id="country" required><br>
                 <label for="phone">Phone Number: </label>
                 <input type="number" class="form-control" name="phone" id="phone" required><br>
-                <input type="submit" class="btn btn-primary" name="submit" value="Submit">  
-                <a href="Login.php" class="btn btn-light">Login</a>
+                <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">  
+                <a href="Login.php" class="btn btn-light">Already a member?</a>
                 <a href="index.php" class="btn btn-default">Back</a>
             </form>
         </div>

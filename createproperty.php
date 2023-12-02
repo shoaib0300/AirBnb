@@ -36,9 +36,9 @@
         <div class="create-property-form">
             <h2 id="create-property-form">Create Property Form</h2>
             <form action="" method="post">
-                <label for="Rnumber">Room Number in Your Buiding: </label>
+                <label for="Rnumber">Room number in your buiding: </label>
                 <input type="text" class="form-control" name="Rnumber" id="roomnumber" maxlength="10" required><br>
-                <label for="Rprice">Roon Price: </label>
+                <label for="Rprice">Room price per night in euro: </label>
                 <input type="text" class="form-control" name="Rprice" id="rprice" required><br>
                 <label for="Rlocation">Room Location: </label>
                 <input type="text" class="form-control" name="Rlocation" id="rlocation" required><br>
