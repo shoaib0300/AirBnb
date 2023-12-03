@@ -1,6 +1,7 @@
 <?php 
-    require_once 'Classes/registration.class.php';
-    require 'HeaderFooter/Header.php';
+    use App\Authentication\Registration;
+    require_once __DIR__ . '/../../vendor/autoload.php';
+    include_once '../../HeaderFooter/Header.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $registration = new Registration();

@@ -1,0 +1,20 @@
+{
+    "name": "shoaib/bulb",
+    "description": "Build, Room Rent Application",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+    {
+        "name": "Shoaib",
+        "email": "shoaibsarwar187@gmail.com"
+    }
+    ],
+    "require": {
+    "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

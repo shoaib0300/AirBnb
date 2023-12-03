@@ -1,11 +1,10 @@
 <?php 
-    include 'HeaderFooter/Header.php';
-    include 'rooms/CreateRoom.php';
+    include_once '../../HeaderFooter/Header.php';
+    use App\Rooms\Room;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
-        $date = new  Room();
+        $date = new Room();
         $from_date = $date->getDate($_POST['from-date']);
         $to_date = $date->getDate($_POST['to-date']);
 

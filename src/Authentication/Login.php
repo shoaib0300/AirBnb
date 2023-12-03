@@ -1,5 +1,11 @@
 <?php
-require 'Database.php';
+
+namespace App\Authentication;
+
+use App\Sessions\Session;
+use App\Database\Database;
+use PDO;
+
 class Login
 {
     private $db;
@@ -24,7 +30,8 @@ class Login
             Session::setSession('email',$user['email']);
             Session::setSession('name',$user['name']);            
             Session::setSession('Login', true);
-            header("Location: index.php");
+
+            header("Location: ../../index.php");
         } else {
             echo "Email OR Password is Wrong";
         }

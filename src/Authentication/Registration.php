@@ -1,8 +1,10 @@
 <?php 
 
-require 'Database.php';
+namespace App\Authentication;
+use App\Database\Database;
+use PDO;
 
-class Registration{
+class Registration {
     private $db; 
     public function __construct(){
         $instance = Database::getInstance();
@@ -21,6 +23,6 @@ class Registration{
         $sql = "INSERT INTO users (username, email, password, country, phone) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$username, $email, $password, $country, $phone]);
-        header("Location: index.php");
+        header("Location: ../../index.php");
     }
 }

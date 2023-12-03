@@ -1,15 +1,18 @@
 <?php
-    include 'rooms/CreateRoom.php';
-    include 'HeaderFooter/Header.php';
-    $data = new Room();
-    $getrooms = $data->getRoomsFromDB();  
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['delete'])) {
-            $id = $_POST['room_id'];
-            $delete = new Room();
-            $delete->deleteRoom($id);
-        }
+include_once '../../HeaderFooter/Header.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use App\Rooms\Room;
+
+$data = new Room();
+$getrooms = $data->getRoomsFromDB();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete'])) {
+        $id = $_POST['room_id'];
+        $delete = new Room();
+        $delete->deleteRoom($id);
     }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +33,7 @@
             border: 2px solid beige;
         }
     </style>
-    <title>Document</title>
+    <title>Rooms</title>
 </head>
 <body>
     <?php 
@@ -42,10 +45,10 @@
         echo '<p style="font-size: 12px;">Post id: ' . $room['room_id'] .'&emsp; &emsp;';
         if (isset($_SESSION['user']) && ($_SESSION['user'] == $room['owner_id'])) {
             echo '<a href="room-edit.php?id=' . $room['room_id'] . '" name="edit" value="Edit" class="btn btn-light">Edit</a>' .
-                '<a type="submit" class="btn btn-danger" name="delete" value="Delete">Delete</a>';
+                '<button type="submit" class="btn btn-danger" name="delete" value="Delete">Delete</button>';
         }
         if(isset($_SESSION['user']) && ($_SESSION['user'] != $room['owner_id'])){
-            echo '<a href="booking.php?id=' . $room['room_id'] . '" name="booking" value="booking" class="btn btn-primary">Book Me</a>';
+            echo '<button href="../Booking/booking.php?id=' . $room['room_id'] . '" name="booking" value="booking" class="btn btn-primary">Book Me</button>';
         }
         echo '</p>';
         echo '</form>';           

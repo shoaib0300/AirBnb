@@ -1,6 +1,5 @@
 <?php
-    require 'Classes/Session.php';
-    Session::sessiosStart();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -21,45 +20,45 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../../index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <?php
                 if(isset($_SESSION['username'])){
                     echo '<a class="nav-link">Logged in as: ' . $_SESSION['username'] . '</a>';
                 } else {
-                    echo '<a class="nav-link" href="Login.php">Login</a>';
+                    echo '<a class="nav-link" href="../Authentication/Login.php">Login</a>';
                 }
                 ?>
             </li>
             <li class="nav-item">
                 <?php
                 if(!isset($_SESSION['username'])){
-                echo '<a class="nav-link" href="Registration.php">Sign Up</a>';
+                echo '<a class="nav-link" href="../Authentication/Registration.php">Sign Up</a>';
                 }
                 ?>
             </li>
             <li class="nav-item">
                 <?php
                 if(isset($_SESSION['username'])){
-                    echo '<a class="nav-link" href="logout.php">Logout</a>';
+                    echo '<a class="nav-link" href="../Authentication/logout.php">Logout</a>';
                 }
                 ?>
             </li>
             <li class="nav-item">
                 <?php
                 if(isset($_SESSION['username'])){
-                    echo '<a class="nav-link" href="createproperty.php">Rent You Rooms</a>';
+                    echo '<a class="nav-link" href="http://localhost/airbnb/views/rooms/createproperty.php">Rent You Rooms</a>';
                 }
                 ?>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="allrooms.php">See All Rooms</a>
+                <a class="nav-link" href="http://localhost/airbnb/views/rooms/allrooms.php">See All Rooms</a>
             </li>
             <li class="nav-item">
                 <?php
                 if(isset($_SESSION['username'])){
-                    echo '<a class="nav-link" href="mybooking.php">My Bookings</a>';
+                    echo '<a class="nav-link" href="http://localhost/airbnb/views/Booking/mybookings.php">My Bookings</a>';
                 }
                 ?>
             </li>

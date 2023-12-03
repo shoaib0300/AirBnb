@@ -1,17 +1,18 @@
 <?php 
-    require_once 'Classes/login.class.php';
-    include 'HeaderFooter/Header.php';
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        if(empty($_POST["email"]) || empty($_POST["password"])){
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+use \App\Authentication\Login;
+include_once '../../HeaderFooter/Header.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (empty($_POST["email"]) || empty($_POST["password"])) {
             echo "<label>All Fields are required</label>";
-        }  
-        else{
+        } else {
             $login = new Login();
-            $login->loginProcess($_POST['email'],$_POST['password']);
+            $login->loginProcess($_POST['email'], $_POST['password']);
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
