@@ -1,5 +1,6 @@
 <?php 
     include_once '../../HeaderFooter/Header.php';
+    require_once __DIR__ . '/../../vendor/autoload.php';
     use App\Rooms\Room;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -46,14 +47,36 @@
                 <label for="ravailabel">Room Available Yes Or No: </label>
                 <input type="text" class="form-control" name="ravailabel" id="ravailabel" required><br>
                 <label for="from-date">Available From: </label>
-                <input type="date" class="form-control" name="from-date" id="room-from-date" required><br>
+                <input type="date" class="form-control" name="from-date" id="room-from-date" required min="<?php echo date('Y-m-d'); ?>"><br>
                 <label for="to-date">Available to: </label>
-                <input type="date" class="form-control" name="to-date" id="room-from-to" required><br>
+                <input type="date" class="form-control" name="to-date" id="room-from-to" required min="<?php echo date('Y-m-d'); ?>"><br>
                 <input type="submit" class="btn btn-primary" name="submit" value="Submit">  
-                <a href="Login.php" class="btn btn-light">Login</a>
                 <a href="index.php" class="btn btn-default">Back</a>
             </form>
         </div>
     </div> 
+    <script>
+    document.getElementById('room-from-date').addEventListener('change', function () {
+        var fromDate = new Date(this.value);
+        var toDateInput = document.getElementById('room-from-to');
+        var toDate = new Date(toDateInput.value);
+
+        if (fromDate > toDate) {
+            alert('Checkout date must be larger than check-in date');
+            toDateInput.value = this.value;
+        }
+    });
+
+    document.getElementById('room-from-to').addEventListener('change', function () {
+        var toDate = new Date(this.value);
+        var fromDateInput = document.getElementById('room-from-date');
+        var fromDate = new Date(fromDateInput.value);
+
+        if (toDate < fromDate) {
+            alert('Checkout date must be larger than check-in date');
+            this.value = fromDateInput.value;
+        }
+    });
+    </script>
 </body>
 </html>

@@ -48,14 +48,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <h4 name="booking_id" value="<?php echo $booking['booking_id']; ?>">Booking ID: <?php echo $booking['booking_id']; ?></h4>
                         <p>Room Number: <?php echo $booking['room_number']; ?></p>
                         <p>Location: <?php echo $booking['location']; ?></p>
-                        <p>Check-in Date: <?php echo date('Y-m-d', strtotime($booking['check_in'])); ?></p>
+                        <p >Check-in Date: <?php echo date('Y-m-d', strtotime($booking['check_in'])); ?></p>
                         <p>Check-out Date: <?php echo date('Y-m-d', strtotime($booking['check_out'])); ?></p>
                         <!-- Add more details as needed -->
                         
                         <!-- Note: Use hidden input for passing the booking_id to the server -->
                         <input type="hidden" name="booking_id" value="<?php echo $booking['booking_id']; ?>">
                         <button type="submit" class="btn btn-danger" name="delete" value="Cancel">Cancel Booking</button>
-                        <button type="submit" class="btn btn-default" name="view" value="View">View Details</button>
+                        <a href="view-booking.php?id=<?php echo $booking['booking_id']; ?>" name="view" class="btn btn-primary">View Booking</a>
                     </form>
 
                 </div>
