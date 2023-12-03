@@ -15,7 +15,7 @@ class Logout
         // Finally, destroy the session
         session_destroy();
 
-        header("Location: Login.php");
+        header("Location: ../../index.php");
         
         exit();
     }

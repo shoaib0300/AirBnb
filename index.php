@@ -1,6 +1,8 @@
 <?php
 
 // session_start();
+ob_start(); 
+
 
 include_once 'HeaderFooter/Header.php';
 require_once __DIR__ . '/vendor/autoload.php';
