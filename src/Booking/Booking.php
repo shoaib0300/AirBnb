@@ -1,6 +1,7 @@
 <?php 
+namespace App\Booking;
 
-require_once 'Database.php';
+use App\Database\Database;
 class Booking{
     private $db;
     public function __construct(){
@@ -26,8 +27,7 @@ class Booking{
         ]);
     
         // Perform the redirection first
-        header("Location: index.php");
+        header("Location: ../../index.php");
         exit();
     }
-    
 }

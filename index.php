@@ -1,24 +1,33 @@
 <?php
-    require 'HeaderFooter/Header.php';
-    require 'Classes/Database.php'; 
-    $instance = Database::getInstance();
-    $db = $instance->getConnection();
-    
-    if(isset($_SESSION['user'])){
-        $id = $_SESSION['user'];
-        $sql = "SELECT * FROM users WHERE id = $id"; 
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-        $user = $stmt->fetch();
-        $_SESSION['id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['country'] = $user['country'];
-        $_SESSION['phone'] = $user['phone'];
-        echo $_SESSION['email'];}
-    else{
-        header("Location: Login.php");
-    }
+
+// session_start();
+
+include_once 'HeaderFooter/Header.php';
+require_once __DIR__ . '/vendor/autoload.php';
+use App\Database\Database;
+use App\Sessions\Session;
+Session::sessionStart();
+
+$instance = Database::getInstance();
+$db = $instance->getConnection();
+
+if (isset($_SESSION['user'])) {
+    $id = $_SESSION['user'];
+    $sql = "SELECT * FROM users WHERE id = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $user = $stmt->fetch();
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['country'] = $user['country'];
+    $_SESSION['phone'] = $user['phone'];
+    echo $_SESSION['email'];
+} else {
+    header("Location: views/Authentication/Login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

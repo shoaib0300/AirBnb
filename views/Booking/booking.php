@@ -1,7 +1,8 @@
 <?php
-include 'HeaderFooter/Header.php';
-include 'rooms/CreateRoom.php';
-include 'Classes/BookingRoom.php';
+include_once '../../HeaderFooter/Header.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use App\Booking\Booking;
+use App\Rooms\Room;
 
     if(isset($_GET['id'])){
         $room_id = $_GET['id'];

@@ -1,4 +1,8 @@
 <?php
+namespace App\Database;
+
+use PDO;
+
     class Database{
         private $username = 'root';
         private $password = '';
