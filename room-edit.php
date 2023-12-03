@@ -6,7 +6,6 @@ if (isset($_GET['id'])) {
     $room_id = $_GET['id'];
     $room = new Room();
     $room_data = $room->getSingleRoom($room_id);
-    // print_r($room_data[0]['available_from']);exit;
     if (!empty($room_data)) {
         $room_id = $room_data[0]['room_id'];
         $owner_id = $room_data[0]['owner_id'];

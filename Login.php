@@ -28,8 +28,8 @@
                 <input type="text"  class="form-control" name="email" id="useremail"><br>
                 <label for="password">Password: </label>
                 <input type="text"  class="form-control" name="password" id="password"><br>
-                <input type="submit" class="btn btn-primary" name="submit" value="Submit">  
-                <a href="Registration.php" class="btn btn-light">Sign Up</a>
+                <input type="submit" class="btn btn-primary" name="submit" value="Login">  
+                <a href="Registration.php" class="btn btn-light">New here?</a>
                 <a href="index.php" class="btn btn-default">Back</a>
             </form>
         </div>    

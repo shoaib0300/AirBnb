@@ -41,20 +41,28 @@
         echo '<input type="hidden" name="room_id" value="' . $room['room_id'] . '">';
         echo '<p style="font-size: 12px;">Post id: ' . $room['room_id'] .'&emsp; &emsp;';
         if (isset($_SESSION['user']) && ($_SESSION['user'] == $room['owner_id'])) {
-            echo '<a href="room-edit.php?id=' . $room['room_id'] . '" name="edit" value="Edit" class="btn btn-link">Edit</a>' .
-                '<a type="submit" class="btn btn-link" name="delete" value="Delete" style="color: red;">Delete</a>';
+            echo '<a href="room-edit.php?id=' . $room['room_id'] . '" name="edit" value="Edit" class="btn btn-light">Edit</a>' .
+                '<a type="submit" class="btn btn-danger" name="delete" value="Delete">Delete</a>';
+        }
+        if(isset($_SESSION['user']) && ($_SESSION['user'] != $room['owner_id'])){
+            echo '<a href="booking.php?id=' . $room['room_id'] . '" name="booking" value="booking" class="btn btn-primary">Book Me</a>';
         }
         echo '</p>';
         echo '</form>';           
         echo '<h4>Room Number: ' . $room['room_number'] . '</h4>';
-        echo '<p>Price: ' . $room['room_price'] . '</p>';
+        echo '<p>Price per night: ' . $room['room_price'] . '</p>';
         echo '<p>Location: ' . $room['location'] . '</p>';
         echo '<p>Guests: ' . $room['number_of_guests'] . '</p>';
         echo '<p>Available: ' . $room['available'] . '</p>';
-        echo '<p>Available From: ' . date('Y-m-d', strtotime($room['available_from'])) . '</p>';
-        echo '<p>Available To: ' . date('Y-m-d', strtotime($room['available_to'])) . '</p>';
+        echo '<p>Available from: ' . date('Y-m-d', strtotime($room['available_from'])) . '</p>';
+        echo '<p>Available to: ' . date('Y-m-d', strtotime($room['available_to'])) . '</p>';
+        echo '<p>';
+        if(!isset($_SESSION['user'])){
+            echo '<a href="Login.php" class="btn btn-primary" name="booking" value="booking">Login For Bookings</a>';
+        }  
+        echo '</p>';
         echo '</div>';
-        echo '<br>';
+        echo '<br>'; 
     }
     echo '</div>';
     ?>
