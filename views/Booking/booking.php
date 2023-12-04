@@ -66,7 +66,7 @@ use App\Rooms\Room;
                 <label for="Rlocation">Room Location: </label>
                 <input type="text" class="form-control" name="Rlocation" id="rlocation" value="<?= $location;?>"  readonly><br>
                 <label for="guests">Total number of Guests: </label>
-                <input type="text" class="form-control" name="guests" id="guests" maxlength="2" value="<?= $number_of_guests;?>"  required><br> 
+                <input type="text" class="form-control" name="guests" id="guests" maxlength="2" value="<?= $number_of_guests;?>"  readonly><br>
                 <label for="from-date">Available From: </label>
                 <input type="date" class="form-control" name="from-date" id="room-from-date" value="<?= $book_from;?>"  required><br>
                 <label for="to-date">Available to: </label>

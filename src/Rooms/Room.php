@@ -31,7 +31,7 @@ class Room{
             $formParams['to-date']
         ]);
         echo "Room Created Succesfully";
-        header("Location: index.php");
+        header("Location: ../../index.php");
     }
     public function getRoomsFromDB(){
         $sql = "SELECT * FROM rooms";
@@ -52,6 +52,26 @@ class Room{
             ]; 
         }
         return $room_data;        
+    }
+    public function getMyRoomsFromDB($id){
+        $sql = "SELECT * FROM rooms WHERE owner_id=$id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($rooms as $room) {
+            $room_data[] = [
+                'room_id' => $room['room_id'],
+                'owner_id' => $room['owner_id'],
+                'room_number' => $room['room_number'],
+                'room_price' => $room['price'],
+                'location' => $room['location'],
+                'number_of_guests' => $room['number_of_guests'],
+                'available' => $room['available'],
+                'available_from' => $room['available_from'],
+                'available_to' => $room['available_to']
+            ];
+        }
+        return $room_data;
     }
     public function deleteRoom($id){
         $sql = "DELETE FROM rooms WHERE room_id=?";

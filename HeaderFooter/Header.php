@@ -58,7 +58,7 @@ session_start();
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Short Airbnb</a>
+    <a class="navbar-brand" href="http://localhost/airbnb/">Short Airbnb</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -75,7 +75,14 @@ session_start();
             <li class="nav-item">
                 <?php
                 if(isset($_SESSION['username'])){
-                    echo '<a class="nav-link">Logged in as: ' . $_SESSION['username'] . '</a>';
+                    echo '<a class="nav-link" href="http://localhost/airbnb/views/rooms/myrooms.php">My Rooms</a>';
+                }
+                ?>
+            </li>
+            <li class="nav-item">
+                <?php
+                if(isset($_SESSION['username'])){
+                    echo '<a class="nav-link" href="http://localhost/airbnb/views/user/userprofile.php">Logged in as: ' . $_SESSION['username'] . '</a>';
                 } else {
                     echo '<a class="nav-link" href="../Authentication/Login.php">Login</a>';
                 }
