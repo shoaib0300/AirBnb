@@ -31,7 +31,7 @@ class Login
             Session::setSession('name',$user['name']);            
             Session::setSession('Login', true);
 
-            header("Location: ../../index.php");
+            header("Location:../../index.php");
         } else {
             echo "Email OR Password is Wrong";
         }

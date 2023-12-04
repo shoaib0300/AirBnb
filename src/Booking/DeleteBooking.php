@@ -3,7 +3,7 @@ namespace App\Booking;
 use App\Database\Database;
 use PDO;
 
-class ShowBooking{
+class DeleteBooking{
     private $db;
 
     public function __construct(){
@@ -11,13 +11,12 @@ class ShowBooking{
         $this->db = $instance->getConnection();
     }
 
-    public function getAllBookings(){
-        $id = $_SESSION['user'];
-        $sql = "SELECT * FROM bookings WHERE book_user_id = $id";
+    public function deleteBooking($id){
+        $sql = "DELETE FROM bookings WHERE booking_id=?";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $rooms;
+        $stmt->execute([$id]);
+        header("Location: ../../index.php");  
+        exit();
     }
 }
 

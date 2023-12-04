@@ -27,7 +27,7 @@ class Booking{
         ]);
     
         // Perform the redirection first
-        header("Location: ../../index.php");
+        header("Location: mybookings.php");
         exit();
     }
 }

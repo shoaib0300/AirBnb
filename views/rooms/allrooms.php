@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 '<button type="submit" class="btn btn-danger" name="delete" value="Delete">Delete</button>';
         }
         if(isset($_SESSION['user']) && ($_SESSION['user'] != $room['owner_id'])){
-            echo '<button href="../Booking/booking.php?id=' . $room['room_id'] . '" name="booking" value="booking" class="btn btn-primary">Book Me</button>';
+            echo '<a href="../Booking/booking.php?id=' . $room['room_id'] . '" name="booking" class="btn btn-primary">Book Me</a>';
         }
         echo '</p>';
         echo '</form>';           
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<p>Available to: ' . date('Y-m-d', strtotime($room['available_to'])) . '</p>';
         echo '<p>';
         if(!isset($_SESSION['user'])){
-            echo '<a href="Login.php" class="btn btn-primary" name="booking" value="booking">Login For Bookings</a>';
+            echo '<a href="../Authentication/Login.php" class="btn btn-primary" name="booking" value="booking">Login For Bookings</a>';
         }  
         echo '</p>';
         echo '</div>';
