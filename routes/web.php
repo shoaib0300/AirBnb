@@ -9,13 +9,11 @@ $router = new Router();
 
 // Define routes
 // Create Router instance with base path
-$router->setBasePath('/Airbnb');
+$router->setNamespace('\App\Controllers');
 
 // Home route
-$router->get('/', function() {
-    // Handle home route
-    include __DIR__ . '/../index.php'; 
-});
+$router->get('/','HomeController@index');
+
 
 // Authentication routes
 $router->get('/login', function() {

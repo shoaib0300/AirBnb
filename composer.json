@@ -11,7 +11,8 @@
     ],
     "require": {
     "php": "^8.0",
-        "bramus/router": "~1.6"
+        "bramus/router": "~1.6",
+        "twig/twig": "^3.8"
     },
     "autoload": {
         "psr-4": {
